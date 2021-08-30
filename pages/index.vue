@@ -1,5 +1,9 @@
 <template>
-  <Tutorial/>
+  <div>
+<NavMenu/>
+<WelcomeLogo/>
+  <MainApp/>
+  </div>
 </template>
 
 <script>
