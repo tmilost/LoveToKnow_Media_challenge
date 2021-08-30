@@ -1,15 +1,14 @@
 <template>
   <div>
-    <el-menu class="el-menu-demo" mode="horizontal">
-      <div class="menuItems">
+    <el-menu class="el-menu-demo " mode="horizontal">
+      <div class="flex justify-center" >
         <el-menu-item
           style="float: left"
           v-on:click="toLink(config.origintrailUrl)"
         >
           <img
-            class="logo"
             src="~/assets/loveToKnow.png"
-            alt="OriginTrail"
+            alt="loveToKnow"
             width="65"
             height="40px"
           />
@@ -52,28 +51,14 @@ export default {
     toLink(adress) {
       window.location.href = adress;
     },
-    homePage() {
-      this.$router.push({ name: "Home" });
-    },
   },
 };
 </script>
 
 <style>
+
 .el-menu-item {
-  width: 175px;
+  width: 575px;
 }
-.menuItems {
-  width: 1270px;
-  margin: auto;
-}
-#app {
-  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: #f8fafd;
-}
-body {
-  margin: 0;
-}
+
 </style>
