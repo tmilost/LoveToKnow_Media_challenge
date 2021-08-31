@@ -38,21 +38,15 @@
           </div>
         </el-upload>
       </div>
-      <!-- -----1-----{{ fileAaList }} -----2-----{{ objInput }} -----3-----{{
-        objTxtContainsSubText
-      }}
-      -----4-----{{ objTotalWithoutSubtext }} -----5-----{{ reverseObject }} -->
-      <!-- <div class="flex justify-center pt-8 sm:pt-0">
-      <el-button v-on:click="calcTotal()">Default</el-button>
-        </div> -->
+
       <div class="sm:rounded-lg p-6">
         <el-card
           v-for="value in objTotalSubtext"
           :key="value"
           class="box-card"
-          style="width: 155px; float: left; margin: 15px 25px 20px 0px"
+          style="width: 165px; float: left; margin: 15px 23px 20px 0px"
         >
-          <div class="text item">- {{ value }}</div>
+          <div class="text item">{{ value }}</div>
         </el-card>
       </div>
     </div>
@@ -66,7 +60,7 @@ export default {
       fileAaList: [],
       objInput: {},
       objTotalWithoutSubtext: {},
-       objTotalSubtext: [],
+      objTotalSubtext: [],
       objTxtContainsSubText: {},
       reverseObject: [],
     };
@@ -77,7 +71,6 @@ export default {
       reader.readAsText(file.raw);
 
       reader.onload = (e) => {
-        
         var cont = e.target.result;
 
         cont = cont.split("\n").join("").split("\r");
@@ -88,7 +81,7 @@ export default {
         this.objInput[name] = cont;
 
         ////////// NEW FUNCTION ///////////
-        //// proces Object, read array, separate total value and subtexts
+        //// Proces Object, read array, separate total value and subtexts
         for (const [key, value] of Object.entries(this.objInput)) {
           var subTextArray = [];
           var total = 0;
@@ -110,10 +103,6 @@ export default {
           if (value.length > 0) {
             value.forEach((element) => {
               if (this.objTotalWithoutSubtext[element] !== undefined) {
-                console.log(
-                  "/--3333335---" + this.objTxtContainsSubText[element]
-                );
-
                 this.objTxtContainsSubText[element].forEach((element1) => {
                   value.push(element1);
                 });
@@ -128,7 +117,6 @@ export default {
         ////////// NEW FUNCTION 2///////////
 
         for (const [key, value] of Object.entries(this.objTxtContainsSubText)) {
-
           if (value.length > 0) {
             console.log("aa" + value);
             value.forEach((element) => {
@@ -142,17 +130,14 @@ export default {
 
         /////// Add Total value to array so it can be rendered
         this.objTotalSubtext = [];
-         for (const [key, value] of Object.entries(this.objTotalWithoutSubtext)) {
-        this.objTotalSubtext.push(key+"-"+value);
-          let unique = [...new Set(  this.objTotalSubtext)];
-                this.objTotalSubtext = unique;
+        for (const [key, value] of Object.entries(
+          this.objTotalWithoutSubtext
+        )) {
+          this.objTotalSubtext.push(key + " - " + value);
         }
-
-
       };
     },
   },
-
 };
 </script>
 
