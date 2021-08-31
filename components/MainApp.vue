@@ -40,12 +40,7 @@
       </div>
 
       <div class="sm:rounded-lg p-6">
-        <el-card
-          v-for="value in objTotalSubtext"
-          :key="value"
-          class="box-card"
-          style="min-width: 165px; float: left; margin: 15px 23px 20px 0px"
-        >
+        <el-card v-for="value in objTotalSubtext" :key="value" class="box-card">
           <div class="text item">{{ value }}</div>
         </el-card>
       </div>
@@ -145,5 +140,10 @@ export default {
 <style scoped>
 .upload-demo {
   margin-top: 35px;
+}
+.box-card {
+  min-width: 165px;
+  float: left;
+  margin: 15px 23px 20px 0px;
 }
 </style>
