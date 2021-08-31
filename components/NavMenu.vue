@@ -1,7 +1,7 @@
 <template>
   <div>
-    <el-menu class="el-menu-demo " mode="horizontal">
-      <div class="flex justify-center" >
+    <el-menu class="el-menu-demo" mode="horizontal">
+      <div class="flex justify-center">
         <el-menu-item
           style="float: left"
           v-on:click="toLink(config.origintrailUrl)"
@@ -14,28 +14,27 @@
           />
         </el-menu-item>
         <el-menu-item
-          v-on:click="toLink(config.cvUrl)"
-          style="float: right; width: 59px"
-        >
-          <font-awesome-icon :icon="['fas', 'address-card']" />
-        </el-menu-item>
-          <el-menu-item
-          v-on:click="toLink(config.instagramUrl)"
-          style="float: right; width: 59px"
-          ><font-awesome-icon :icon="['fab', 'instagram']" />
-        </el-menu-item>
-        <el-menu-item
           v-on:click="toLink(config.linkedInUrl)"
           style="float: right; width: 59px"
           ><font-awesome-icon :icon="['fab', 'linkedin']" />
         </el-menu-item>
-         
+
         <el-menu-item
           v-on:click="toLink(config.gitUrl)"
           style="float: right; width: 59px"
           ><font-awesome-icon :icon="['fab', 'github']" />
         </el-menu-item>
-       
+        <el-menu-item
+          v-on:click="toLink(config.instagramUrl)"
+          style="float: right; width: 59px"
+          ><font-awesome-icon :icon="['fab', 'instagram']" />
+        </el-menu-item>
+        <el-menu-item
+          v-on:click="toLink(config.cvUrl)"
+          style="float: right; width: 59px"
+        >
+          <font-awesome-icon :icon="['fas', 'address-card']" />
+        </el-menu-item>
       </div>
     </el-menu>
   </div>
@@ -45,7 +44,7 @@
 import config from "~/assets/config.json";
 export default {
   data: () => ({
-    config: config
+    config: config,
   }),
   methods: {
     toLink(adress) {
@@ -56,9 +55,7 @@ export default {
 </script>
 
 <style>
-
 .el-menu-item {
   width: 575px;
 }
-
 </style>
