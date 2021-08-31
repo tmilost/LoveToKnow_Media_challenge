@@ -1,8 +1,14 @@
 export default {
-  target: 'static',
+  mode: 'static',
   router: {
-    base: '/LoveToKnow_Media_challenge/'
+     base: '/LoveToKnow_Media_challenge/'
   },
+  // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
+  ssr: false,
+
+  // Target: https://go.nuxtjs.dev/config-target
+  target: 'static',
+
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'LoveToKnow_Media_challenge',
@@ -55,7 +61,6 @@ export default {
 ]
     
   ],
-
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     transpile: [/^element-ui/],

@@ -17,9 +17,9 @@
     />
     <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
       <div class="download-files">
-        <a href="/A.txt" class="link-to-files" download>Example file A.txt</a>
-        <a href="/B.txt" class="link-to-files" download>Example file B.txt</a>
-        <a href="/C.txt" class="link-to-files" download>Example file C.txt</a>
+        <a href="https://tmilost.github.io/LoveToKnow_Media_challenge/A.txt" class="link-to-files" download>Example file A.txt</a>
+        <a href="https://tmilost.github.io/LoveToKnow_Media_challenge/B.txt" class="link-to-files" download>Example file B.txt</a>
+        <a href="https://tmilost.github.io/LoveToKnow_Media_challenge/C.txt" class="link-to-files" download>Example file C.txt</a>
       </div>
       <div class="flex justify-center pt-8 sm:pt-0">
         <el-upload
@@ -154,3 +154,5 @@ export default {
   margin-top: 9px;
 }
 </style>
+
+
