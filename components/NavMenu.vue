@@ -3,7 +3,7 @@
     <el-menu class="el-menu-demo" mode="horizontal">
       <div class="flex justify-center">
         <el-menu-item
-          style="float: left"
+          class="menu-item-image"
           v-on:click="toLink(config.origintrailUrl)"
         >
           <img
@@ -13,26 +13,17 @@
             height="40px"
           />
         </el-menu-item>
-        <el-menu-item
-          v-on:click="toLink(config.linkedInUrl)"
-          style="float: right; width: 59px"
+        <el-menu-item v-on:click="toLink(config.linkedInUrl)" class="menu-item"
           ><font-awesome-icon :icon="['fab', 'linkedin']" />
         </el-menu-item>
 
-        <el-menu-item
-          v-on:click="toLink(config.gitUrl)"
-          style="float: right; width: 59px"
+        <el-menu-item v-on:click="toLink(config.gitUrl)" class="menu-item"
           ><font-awesome-icon :icon="['fab', 'github']" />
         </el-menu-item>
-        <el-menu-item
-          v-on:click="toLink(config.instagramUrl)"
-          style="float: right; width: 59px"
+        <el-menu-item v-on:click="toLink(config.instagramUrl)" class="menu-item"
           ><font-awesome-icon :icon="['fab', 'instagram']" />
         </el-menu-item>
-        <el-menu-item
-          v-on:click="toLink(config.cvUrl)"
-          style="float: right; width: 59px"
-        >
+        <el-menu-item v-on:click="toLink(config.cvUrl)" class="menu-item">
           <font-awesome-icon :icon="['fas', 'address-card']" />
         </el-menu-item>
       </div>
@@ -57,5 +48,12 @@ export default {
 <style>
 .el-menu-item {
   width: 575px;
+}
+.menu-item-image {
+  float: left;
+}
+.menu-item {
+  float: right;
+  width: 59px;
 }
 </style>
