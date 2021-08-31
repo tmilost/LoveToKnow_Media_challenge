@@ -102,8 +102,10 @@ This directory contains your Vuex store files. Creating a file in this directory
 
 More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
 
-### useful links
+### useful links for deployment
 
 https://stackoverflow.com/questions/65250206/problem-with-deploy-nuxt-js-in-github-pages
 
 https://reactgo.com/nuxt-deploy-github-pages/
+
+https://nuxtjs.org/docs/2.x/deployment/github-pages
