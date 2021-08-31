@@ -53,12 +53,10 @@
 export default {
   data: function () {
     return {
-      fileAaList: [],
       objInput: {},
       objTotalWithoutSubtext: {},
       objTotalSubtext: [],
       objTxtContainsSubText: {},
-      reverseObject: [],
     };
   },
   methods: {
@@ -72,8 +70,6 @@ export default {
         var cont = e.target.result;
 
         cont = cont.split("\n").join("").split("\r");
-
-        this.fileAaList.push(cont);
 
         var name = file.name;
         this.objInput[name] = cont;
