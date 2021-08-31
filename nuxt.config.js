@@ -1,5 +1,5 @@
 export default {
-  mode: 'static',
+  target: 'static',
   router: {
      base: '/LoveToKnow_Media_challenge/'
   },
