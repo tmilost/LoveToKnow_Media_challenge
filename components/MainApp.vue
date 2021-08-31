@@ -154,4 +154,3 @@ export default {
   margin-top: 9px;
 }
 </style>
-
