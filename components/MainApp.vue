@@ -81,7 +81,7 @@ export default {
         this.objInput[name] = cont;
 
         ////////// NEW FUNCTION ///////////
-        //// Proces Object, read array, separate total value and subtexts
+        ///// Proces Object, read array, separate total value and subtexts
         for (const [key, value] of Object.entries(this.objInput)) {
           var subTextArray = [];
           var total = 0;
@@ -98,7 +98,7 @@ export default {
         }
 
         ////////// NEW FUNCTION 1///////////
-        //// Add subtext of subtext
+        ///// Add subtext of subtext
         for (const [key, value] of Object.entries(this.objTxtContainsSubText)) {
           if (value.length > 0) {
             value.forEach((element) => {
@@ -115,10 +115,9 @@ export default {
         }
 
         ////////// NEW FUNCTION 2///////////
-
+        ///// Count total with subtext
         for (const [key, value] of Object.entries(this.objTxtContainsSubText)) {
           if (value.length > 0) {
-            console.log("aa" + value);
             value.forEach((element) => {
               if (this.objTotalWithoutSubtext[element] !== undefined) {
                 this.objTotalWithoutSubtext[key] +=
