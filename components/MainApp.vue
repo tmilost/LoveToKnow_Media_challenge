@@ -44,7 +44,7 @@
           v-for="value in objTotalSubtext"
           :key="value"
           class="box-card"
-          style="width: 165px; float: left; margin: 15px 23px 20px 0px"
+          style="min-width: 165px; float: left; margin: 15px 23px 20px 0px"
         >
           <div class="text item">{{ value }}</div>
         </el-card>
@@ -67,6 +67,8 @@ export default {
   },
   methods: {
     readFile(file) {
+      ///// It's all in one function, so if someone is looking at the code, they can do it faster
+
       let reader = new FileReader();
       reader.readAsText(file.raw);
 
