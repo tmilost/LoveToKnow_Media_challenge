@@ -123,7 +123,7 @@ export default {
             });
           }
         }
-        this.objTotalWithSubText = this.objTotalWithoutSubtext;
+        this.objTotalWithSubText = Object.assign({}, this.objTotalWithoutSubtext);
 
         ////////// NEW FUNCTION 2///////////
         ///// Count total with subtext
