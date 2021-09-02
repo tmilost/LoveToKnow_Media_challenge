@@ -17,6 +17,7 @@
     />
     <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
       <div class="download-files">
+        <b class="link-to-files">Click on example file to download</b>
         <a :href="urlToFile('/A.txt')" class="link-to-files" download
           >Example file A.txt</a
         >
