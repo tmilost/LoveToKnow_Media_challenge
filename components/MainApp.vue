@@ -46,7 +46,23 @@
           </div>
         </el-upload>
       </div>
-
+      <div class="flex justify-center pt-8 sm:pt-0 my-2">
+        <el-dropdown>
+          <span class="el-dropdown-link">
+            Choose which file to start from<i
+              class="el-icon-arrow-down el-icon--right"
+            ></i>
+          </span>
+          <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item
+              v-for="(value, name) in objInput"
+              :key="name"
+              @click.native="sumFromFile(name)"
+              >{{ name }}</el-dropdown-item
+            >
+          </el-dropdown-menu>
+        </el-dropdown>
+      </div>
       <div class="sm:rounded-lg p-6">
         <el-card
           v-for="value in arrayTotalSubtext"
@@ -92,58 +108,97 @@ export default {
 
         ////////// NEW FUNCTION ///////////
         ///// Proces Object, read array, separate total value and subtexts
-        for (const [key, value] of Object.entries(this.objInput)) {
-          var subTextArray = [];
-          var total = 0;
-          value.forEach((element) => {
-            if (element.match(/^\d+$/)) {
-              total += parseInt(element);
-            } else if (element.match(/.txt$/)) {
-              subTextArray.push(element);
-            }
-            this.objTxtContainsSubText[key] = subTextArray;
 
-            this.objTotalWithoutSubtext[key] = total;
-          });
-        }
+        this.separateTotalAndSubtext(this.objInput);
 
         ////////// NEW FUNCTION 1///////////
         ///// Add subtext of subtext
-        for (const [key, value] of Object.entries(this.objTxtContainsSubText)) {
-          if (value.length > 0) {
-            value.forEach((element) => {
-              if (this.objTotalWithoutSubtext[element] !== undefined) {
-                this.objTxtContainsSubText[element].forEach((element1) => {
-                  value.push(element1);
-                });
-                /// Remove duplicate values from subtext array
-                let unique = [...new Set(value)];
-                value = unique;
-              }
-            });
-          }
-        }
-        this.objTotalWithSubText = Object.assign({}, this.objTotalWithoutSubtext);
+
+        this.addSubTextOfOther();
 
         ////////// NEW FUNCTION 2///////////
         ///// Count total with subtext
-        for (const [key, value] of Object.entries(this.objTxtContainsSubText)) {
-          if (value.length > 0) {
-            value.forEach((element) => {
-              if (this.objTotalWithoutSubtext[element] !== undefined) {
-                this.objTotalWithSubText[key] +=
-                  this.objTotalWithoutSubtext[element];
-              }
-            });
-          }
-        }
+
+        this.countTotal();
 
         /////// Add Total value to array so it can be rendered
-        this.arrayTotalSubtext = [];
-        for (const [key, value] of Object.entries(this.objTotalWithSubText)) {
-          this.arrayTotalSubtext.push(key + " - " + value);
-        }
+
+        this.addTotalToArray();
       };
+    },
+    separateTotalAndSubtext(objInput) {
+      for (const [key, value] of Object.entries(objInput)) {
+        var subTextArray = [];
+        var total = 0;
+        value.forEach((element) => {
+          if (element.match(/^\d+$/)) {
+            total += parseInt(element);
+          } else if (element.match(/.txt$/)) {
+            subTextArray.push(element);
+          }
+          this.objTxtContainsSubText[key] = subTextArray;
+
+          this.objTotalWithoutSubtext[key] = total;
+        });
+      }
+    },
+    addSubTextOfOther() {
+      for (const [key, value] of Object.entries(this.objTxtContainsSubText)) {
+        if (value.length > 0) {
+          value.forEach((arrayOfSubText) => {
+            if (this.objTotalWithoutSubtext[arrayOfSubText] !== undefined) {
+              this.objTxtContainsSubText[arrayOfSubText].forEach((subText) => {
+                value.push(subText);
+              });
+              /// Remove duplicate values from subtext array
+              let unique = [...new Set(value)];
+              value = unique;
+            }
+          });
+        }
+        this.objTotalWithSubText = Object.assign(
+          {},
+          this.objTotalWithoutSubtext
+        );
+      }
+    },
+    countTotal() {
+      for (const [key, value] of Object.entries(this.objTxtContainsSubText)) {
+        if (value.length > 0) {
+          value.forEach((subText) => {
+            if (this.objTotalWithoutSubtext[subText] !== undefined) {
+              this.objTotalWithSubText[key] +=
+                this.objTotalWithoutSubtext[subText];
+            }
+          });
+        }
+      }
+    },
+    addTotalToArray() {
+      this.arrayTotalSubtext = [];
+      for (const [key, value] of Object.entries(this.objTotalWithSubText)) {
+        this.arrayTotalSubtext.push(key + " - " + value);
+      }
+    },
+    sumFromFile(name) {
+      var objInputCopy = Object.assign({}, this.objInput);
+      var index = Object.keys(this.objInput).indexOf(name);
+      for (const [key, value] of Object.entries(this.objInput)) {
+        var aa = Object.keys(this.objInput).indexOf(key);
+        if (aa < index) {
+          delete objInputCopy[key];
+        }
+      }
+
+      this.objTotalWithoutSubtext = {};
+      this.objTxtContainsSubText = {};
+      this.objTotalWithSubText = {};
+      this.arrayTotalSubtext = [];
+
+      this.separateTotalAndSubtext(objInputCopy);
+      this.addSubTextOfOther();
+      this.countTotal();
+      this.addTotalToArray();
     },
   },
 };
