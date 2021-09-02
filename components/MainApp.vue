@@ -17,22 +17,13 @@
     />
     <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
       <div class="download-files">
-        <a
-          href="https://tmilost.github.io/LoveToKnow_Media_challenge/A.txt"
-          class="link-to-files"
-          download
+        <a :href="urlToFile('/A.txt')" class="link-to-files" download
           >Example file A.txt</a
         >
-        <a
-          href="https://tmilost.github.io/LoveToKnow_Media_challenge/B.txt"
-          class="link-to-files"
-          download
+        <a :href="urlToFile('/B.txt')" class="link-to-files" download
           >Example file B.txt</a
         >
-        <a
-          href="https://tmilost.github.io/LoveToKnow_Media_challenge/C.txt"
-          class="link-to-files"
-          download
+        <a :href="urlToFile('/C.txt')" class="link-to-files" download
           >Example file C.txt</a
         >
       </div>
@@ -75,6 +66,10 @@ export default {
     };
   },
   methods: {
+    urlToFile(addres) {
+      let fullAdress = window.location.href + addres;
+      return fullAdress;
+    },
     readFile(file) {
       ///// It's all in one function, so if someone is looking at the code, they can do it faster
 
