@@ -104,8 +104,22 @@ More information about the usage of this directory in [the documentation](https:
 
 ### useful links for deployment
 
-https://stackoverflow.com/questions/65250206/problem-with-deploy-nuxt-js-in-github-pages
-
 https://reactgo.com/nuxt-deploy-github-pages/
 
 https://nuxtjs.org/docs/2.x/deployment/github-pages
+
+### after this commit anything
+https://stackoverflow.com/questions/65250206/problem-with-deploy-nuxt-js-in-github-pages
+
+remove the dist entry from .gitignore file
+### run those command
+
+###  npm run generate
+###  git add . 
+then 
+### git commit -m "deploy on gh-pages"
+
+### git subtree push --prefix dist origin gh-pages 
+
+Make sure to delete the current gh-pages branch before running these commands.
+
