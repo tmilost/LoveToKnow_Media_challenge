@@ -48,7 +48,11 @@
       </div>
 
       <div class="sm:rounded-lg p-6">
-        <el-card v-for="value in objTotalSubtext" :key="value" class="box-card">
+        <el-card
+          v-for="value in arrayTotalSubtext"
+          :key="value"
+          class="box-card"
+        >
           <div class="text item">{{ value }}</div>
         </el-card>
       </div>
@@ -62,8 +66,9 @@ export default {
     return {
       objInput: {},
       objTotalWithoutSubtext: {},
-      objTotalSubtext: [],
       objTxtContainsSubText: {},
+      objTotalWithSubText: {},
+      arrayTotalSubtext: [],
     };
   },
   methods: {
@@ -118,6 +123,7 @@ export default {
             });
           }
         }
+        this.objTotalWithSubText = this.objTotalWithoutSubtext;
 
         ////////// NEW FUNCTION 2///////////
         ///// Count total with subtext
@@ -125,7 +131,7 @@ export default {
           if (value.length > 0) {
             value.forEach((element) => {
               if (this.objTotalWithoutSubtext[element] !== undefined) {
-                this.objTotalWithoutSubtext[key] +=
+                this.objTotalWithSubText[key] +=
                   this.objTotalWithoutSubtext[element];
               }
             });
@@ -133,11 +139,9 @@ export default {
         }
 
         /////// Add Total value to array so it can be rendered
-        this.objTotalSubtext = [];
-        for (const [key, value] of Object.entries(
-          this.objTotalWithoutSubtext
-        )) {
-          this.objTotalSubtext.push(key + " - " + value);
+        this.arrayTotalSubtext = [];
+        for (const [key, value] of Object.entries(this.objTotalWithSubText)) {
+          this.arrayTotalSubtext.push(key + " - " + value);
         }
       };
     },
