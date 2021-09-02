@@ -17,9 +17,24 @@
     />
     <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
       <div class="download-files">
-        <a href="https://tmilost.github.io/LoveToKnow_Media_challenge/A.txt" class="link-to-files" download>Example file A.txt</a>
-        <a href="https://tmilost.github.io/LoveToKnow_Media_challenge/B.txt" class="link-to-files" download>Example file B.txt</a>
-        <a href="https://tmilost.github.io/LoveToKnow_Media_challenge/C.txt" class="link-to-files" download>Example file C.txt</a>
+        <a
+          href="https://tmilost.github.io/LoveToKnow_Media_challenge/A.txt"
+          class="link-to-files"
+          download
+          >Example file A.txt</a
+        >
+        <a
+          href="https://tmilost.github.io/LoveToKnow_Media_challenge/B.txt"
+          class="link-to-files"
+          download
+          >Example file B.txt</a
+        >
+        <a
+          href="https://tmilost.github.io/LoveToKnow_Media_challenge/C.txt"
+          class="link-to-files"
+          download
+          >Example file C.txt</a
+        >
       </div>
       <div class="flex justify-center pt-8 sm:pt-0">
         <el-upload
@@ -69,7 +84,7 @@ export default {
       reader.onload = (e) => {
         var cont = e.target.result;
 
-        cont = cont.split("\n").join("").split("\r");
+        cont = cont.split(/\r\n|\n/);
 
         var name = file.name;
         this.objInput[name] = cont;
